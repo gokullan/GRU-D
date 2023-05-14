@@ -90,8 +90,8 @@ class DataHandler(object):
         if not os.path.exists(self._fold_file):
             raise ValueError('Fold file does not exist...')
         # Get input, masking, timestamp, label_$label_name$, fold, mean, std, etc.
-        data = np.load(self._data_file)
-        fold = np.load(self._fold_file)
+        data = np.load(self._data_file, allow_pickle=True)
+        fold = np.load(self._fold_file, allow_pickle=True)
         self._data = {}
         for s in ['input', 'masking', 'timestamp']:
             self._data[s] = data[s]
